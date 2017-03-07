@@ -9,4 +9,4 @@ RUN wget -O- https://dev.marc.waeckerlin.org/repository/PublicKey | apt-key add 
 RUN apt-get update
 RUN locale-gen ${LANG}
 RUN update-locale LANG=${LANG}
-ENTRYPOINT ["/bin/bash", "-ec"]
+ENTRYPOINT ["/bin/bash"]
