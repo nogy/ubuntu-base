@@ -1,6 +1,7 @@
 FROM ubuntu
 MAINTAINER mwaeckerlin
 ENV TERM xterm
+ENV DEBIAN_FRONTEND noninteractive
 ENV LANG "en_US.UTF-8"
 RUN apt-get update && apt-get install -y lsb-release language-pack-en less emacs-nox vim wget software-properties-common apt-transport-https nmap iputils-ping
 RUN apt-add-repository https://dev.marc.waeckerlin.org/repository
