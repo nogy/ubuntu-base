@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV LANG "en_US.UTF-8"
 ENV OTHER_LANGS="de_CH.UTF-8 de_DE.UTF-8 de_AT.UTF-8 fr_CH.UTF-8 fr_FR.UTF-8 it_CH.UTF-8 it_IT.UTF-8 es_ES.UTF-8"
 
+RUN groupadd -g 500 ssl-cert
+
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y lsb-release language-pack-en language-pack-de language-pack-it language-pack-fr language-pack-es less emacs-nox vim wget software-properties-common apt-transport-https nmap iputils-ping
 RUN apt-add-repository https://dev.marc.waeckerlin.org/repository
 RUN wget -O- https://dev.marc.waeckerlin.org/repository/PublicKey | apt-key add -
