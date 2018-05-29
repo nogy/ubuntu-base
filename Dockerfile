@@ -1,8 +1,9 @@
 FROM ubuntu
 MAINTAINER mwaeckerlin
+ARG wwwuser="nginx"
 
+ENV WWWUSER="${wwwuser}"
 ENV TERM xterm
-#ENV EDITOR emacs
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG "en_US.UTF-8"
 ENV OTHER_LANGS="de_CH.UTF-8 de_DE.UTF-8 de_AT.UTF-8 fr_CH.UTF-8 fr_FR.UTF-8 it_CH.UTF-8 it_IT.UTF-8 es_ES.UTF-8"
@@ -16,8 +17,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y $_PACKAGES $
 RUN apt-add-repository https://dev.marc.waeckerlin.org/repository
 RUN wget -O- https://dev.marc.waeckerlin.org/repository/PublicKey | apt-key add -
 RUN apt-get update
-RUN rm /root/.bashrc /etc/bash.bashrc /root/.profile /etc/profile /etc/skel/.bashrc
-RUN for lang in ${LANG} ${OTHER_LANGS}; do \
+RUN for lang in ${OTHER_LANGS} ${LANG}; do \
       locale-gen ${lang}; \
       update-locale LANG=${lang}; \
     done
