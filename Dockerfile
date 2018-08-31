@@ -17,7 +17,7 @@ ENV PS1               '\[\033[36;1m\]\u\[\033[97m\]@\[\033[32m\]${CONTAINERNAME}
 ENV PS4               '$(printf "\[\033[37;1m\]$0 \[\033[33m\]%4d\[\033[0m\]: " ${LINENO})'
 ENV TERM              "xterm"
 ENV DEBIAN_FRONTEND   "noninteractive"
-ENV _TMP_PACKAGES     "lsb-release wget software-properties-common"
+ENV _TMP_PACKAGES     "lsb-release wget software-properties-common gpg-agent"
 #ENV _REMOVE_PACKAGES  "systemd base-passwd e2fslibs e2fsprogs initscripts libapparmor1 libsystemd0 bsdutils util-linux libudev1 makedev mount sysv-rc sysvinit-utils apt+ libudev1+"
 ENV _PACKAGES         "language-pack-en apt-transport-https"
 
