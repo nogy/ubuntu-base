@@ -29,7 +29,7 @@ ENV DEBIAN_FRONTEND   "noninteractive"
 
 ENV _TMP_PACKAGES     "lsb-release wget software-properties-common gpg-agent"
 #ENV _REMOVE_PACKAGES  "systemd base-passwd e2fslibs e2fsprogs initscripts libapparmor1 libsystemd0 bsdutils util-linux libudev1 makedev mount sysv-rc sysvinit-utils apt+ libudev1+"
-ENV _PACKAGES         "language-pack-en apt-transport-https"
+ENV _PACKAGES         "language-pack-en apt-transport-https locales"
 
 ADD cleanup.sh /cleanup.sh
 ADD aptconf /etc/apt/apt.conf.d/aptconf
@@ -40,9 +40,6 @@ RUN groupadd -g ${SHARED_GROUP_ID} ${SHARED_GROUP_NAME} \
  && apt-get update \
  && apt-get dist-upgrade -y \
  && $PKG_INSTALL $_PACKAGES $_TMP_PACKAGES  \
- && wget -O- https://repository.mrw.sh/PublicKey | apt-key add - \
- && apt-add-repository https://repository.mrw.sh \
- && apt-get update \
  && locale-gen ${LANG} \
  && update-locale LANG=${LANG} \
  && $PKG_REMOVE $_TMP_PACKAGES $_REMOVE_PACKAGES \
